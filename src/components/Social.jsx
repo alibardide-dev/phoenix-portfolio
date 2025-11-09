@@ -26,7 +26,7 @@ const Social = () => {
         </div>
       </div>
       <a
-        href="https://cvresume.ir/r/DuXe7dbv-E_tRD8CZq7KGA"
+        href="https://docs.google.com/document/d/15210qMpNG37ifaj9IbWtX5IuEiGn5Me16_UWWAiFPBo"
         target="_blank"
         rel="noopener noreferrer"
         className="flex text-sm transition ease-in-out rounded-md items-center justify-center py-2 px-4 font-bold text-primary-content border-2 border-primary hover:bg-primary cursor-pointer"
@@ -47,3 +47,4 @@ const SocialMiniIcon = ({ children, href }) => {
 };
 
 export default Social;
+
