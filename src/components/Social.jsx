@@ -20,7 +20,7 @@ const Social = () => {
           </div>
         </div>
         <div className="md:hidden h-full flex flex-row items-center justify-center gap-2">
-          <SocialMiniIcon href="https://github.com/alibardide5124"><GitHubIcon className={iconsClass}/></SocialMiniIcon>
+          <SocialMiniIcon href="https://github.com/alibardide-dev"><GitHubIcon className={iconsClass}/></SocialMiniIcon>
           <SocialMiniIcon href="https://linkedin.com/in/alibardide"><LinkedinIcon className={iconsClass} /></SocialMiniIcon>
           <SocialMiniIcon href="https://youtube.com/@PhoenixCodin"><YouTubeIcon className={iconsClass} /></SocialMiniIcon>
         </div>
@@ -47,4 +47,5 @@ const SocialMiniIcon = ({ children, href }) => {
 };
 
 export default Social;
+
 
