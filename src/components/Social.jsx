@@ -12,7 +12,7 @@ const Social = () => {
       <div className="flex space-x-4 md:px-4">
         <div className="hidden md:block h-full mt-2 md:mt-0">
           <div className="flex flex-row items-center gap-2">
-            <FlipLink href="https://github.com/alibardide5124">GITHUB</FlipLink>
+            <FlipLink href="https://github.com/alibardide-dev">GITHUB</FlipLink>
             <FlipLink href="https://linkedin.com/in/alibardide">
               LINKEDIN
             </FlipLink>
@@ -47,5 +47,6 @@ const SocialMiniIcon = ({ children, href }) => {
 };
 
 export default Social;
+
 
 
