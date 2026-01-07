@@ -1,5 +1,18 @@
 export default [
   {
+    title: "Booklet",
+    year: 2026,
+    imageUrl: "https://raw.githubusercontent.com/alibardide-dev/Booklet/refs/heads/main/docs/booklet_banner.png",
+    github: "https://github.com/alibardide-dev/Booklet",
+    repo: "Booklet",
+    skills: [ "Android", "Jetpack Compose", "Library"],
+    summary: "Android Book Library / Wishlist Manager",
+    description: `I've had this idea for a long time, and finally made it happen. \n
+    You can add your books and their cover, and manage them based on if they're on your wishlist, you're reading them, it's finished or archived. \n
+    \n
+    A cool function is that you can take a backup of your data and restore it as it was on another phone`,
+  },
+  {
     title: "Valentine Game",
     year: 2025,
     imageUrl: "/assets/valentine-banner.png",
@@ -83,4 +96,5 @@ It built with xml design system and has very simple straight forward user interf
 I used some image compression libraries which you can find on source project, and also made it easy to use.`,
   },
 ];
+
 
