@@ -5,7 +5,7 @@ import FlipText from "./FlipText";
 
 function Intro() {
   return (
-    <div className="overflow-hidden md:overflow-visible relative flex flex-col h-auto w-auto w-full h-screen pt-12 justify-center items-center">
+    <div className="overflow-hidden md:overflow-visible relative flex flex-col h-auto w-auto w-full md:h-screen pt-12 justify-center items-center">
       <div className="self-center max-h-lg w-full">
         <div className="relative">
           <div className="absolute  left-[45%] w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-darken dark:mix-blend-lighten filter blur-xl opacity-50 animate-blob"></div>
@@ -15,35 +15,41 @@ function Intro() {
       </div>
       <figure className="flex flex-col mx-auto w-11/12 bg-opacity-40 rounded-lg p-8 md:w-9/12 lg:w-6/12 mb-8 items-start md:mr-84">
         <div className="pt-6 text-center lg:text-left space-y-4 items-center">
-          <Reveal>
-            <p className="flex flex-wrap text-6xl items-center gap-4 font-black">
-              Hey, I&apos;m
-              <span
-                className="text-secondary items-center flex flex-row"
-                style={{ lineHeight: 0.85 }}
-              >
-                <FlipText>Ali</FlipText>.
-              </span>
-            </p>
-          </Reveal>
-          <figcaption className="font-medium gap-1">
-            <Reveal>
-              <div className="text-xl text-black dark:text-white">
-                <p>
-                  I&apos;m a{" "}
-                  <span className="text-primary font-bold">
-                    Mobile Developer
+          <div className="flex flex-row gap-8">
+            <img className="hidden md:block rounded-md size-32 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
+            <div className="flex flex-auto flex-col">
+              <Reveal>
+                <p className="flex flex-wrap text-6xl items-center gap-4 font-black">
+                  <img className="block md:hidden rounded-md size-16 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
+                  Hey, I&apos;m
+                  <span
+                    className="text-secondary items-center flex flex-row"
+                    style={{ lineHeight: 0.85 }}
+                  >
+                    <FlipText>Ali</FlipText>.
                   </span>
                 </p>
-              </div>
-            </Reveal>
+              </Reveal>
+              <Reveal>
+                <div className="text-xl text-black dark:text-white">
+                  <p>
+                    I&apos;m a{" "}
+                    <span className="text-primary font-bold">
+                      Mobile Developer
+                    </span>
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+          <figcaption className="font-medium gap-1">
             <Reveal>
               <p className="text-start">
-                a Computer Science student with over three years of experience
-                as a freelance developer. Specialized in Android and Laravel
-                development, and as always I&apos;m enthusiastic about expanding my
-                knowledge. I&apos;ve worked on various application and contributed to
-                open-source projects.
+                a Computer Science graduate with over five years of experience
+                as an indie Android Developer. Specialized in Android and Laravel
+                development, and as always I&apos;m enthusiastic about computer stuff.
+                I&apos;ve worked on various application and contributed to
+                different open-source projects.
               </p>
             </Reveal>
           </figcaption>

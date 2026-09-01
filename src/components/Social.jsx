@@ -16,13 +16,13 @@ const Social = () => {
             <FlipLink href="https://linkedin.com/in/alibardide">
               LINKEDIN
             </FlipLink>
-            <FlipLink href="https://youtube.com/@AliBardide">YOUTUBE</FlipLink>
+            <FlipLink href="https://youtube.com/@OrangeFinex">YOUTUBE</FlipLink>
           </div>
         </div>
         <div className="md:hidden h-full flex flex-row items-center justify-center gap-2">
           <SocialMiniIcon href="https://github.com/alibardide-dev"><GitHubIcon className={iconsClass}/></SocialMiniIcon>
           <SocialMiniIcon href="https://linkedin.com/in/alibardide"><LinkedinIcon className={iconsClass} /></SocialMiniIcon>
-          <SocialMiniIcon href="https://youtube.com/@PhoenixCodin"><YouTubeIcon className={iconsClass} /></SocialMiniIcon>
+          <SocialMiniIcon href="https://youtube.com/@OrangeFinex"><YouTubeIcon className={iconsClass} /></SocialMiniIcon>
         </div>
       </div>
       <a

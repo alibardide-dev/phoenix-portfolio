@@ -36,7 +36,7 @@ const Reveal = ({ children, width ="fit-content" }) => {
         initial="hidden"
         animate={slideControls}
         transition={{ duration: 0.5, ease: "easeIn" }}
-        className="absolute inset-0 bg-primary z-20"
+        className="hidden md:block absolute inset-0 bg-primary z-20"
       />
     </div>
   );

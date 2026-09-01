@@ -32,7 +32,7 @@ const Modal = ({ project, handleClose }) => {
           <img className="w-full aspect-[16/9]" src={project.imageUrl} />
           <div 
           onClick={handleClose}
-        className="absolute start-0 top-0 m-3 group transition ease-in-out rounded-md items-center justify-center p-1 border-2 border-white hover:bg-white cursor-pointer">
+        className="absolute start-0 top-0 m-3 group transition ease-in-out rounded-md items-center justify-center p-1 border-2 border-white hover:bg-stone-300 bg-white cursor-pointer">
             <CloseIcon className="transition ease-in-out fill-copy size-5 group-hover:fill-black" />
           </div>
           <h1 className="text-lg px-4 my-2">{project.title}</h1>

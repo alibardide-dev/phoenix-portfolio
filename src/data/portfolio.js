@@ -15,11 +15,11 @@ export default [
   {
     title: "Valentine Game",
     year: 2025,
-    imageUrl: "/assets/valentine-banner.png",
+    imageUrl: "https://raw.githubusercontent.com/alibardide-dev/valentine-game/refs/heads/main/readme.files/valentine-banner.png",
     github: "https://github.com/alibardide-dev/valentine-game",
     repo: "valentine-game",
     skills: [ "Android", "Jetpack Compose", "Retro Style", "Canvas" ],
-    summary: "Android retro-inspired ui game, to ask your valentine",
+    summary: "Android GameBoy inspired game, to ask your valentine",
     description: `I got the idea and used online assets to design and program this application. It uses compose Canvas an uses StateFlow to keep track of user inputs.\n
     The main challenge was getting used to animations and moving character, and also changing character sprite, which was new to me.\n
     \n
@@ -44,7 +44,7 @@ export default [
   {
     title: "News App",
     year: 2022,
-    imageUrl: "/assets/news-banner.png",
+    imageUrl: "https://raw.githubusercontent.com/alibardide-dev/News-app/refs/heads/main/readme.files/banner-light.png",
     github: "https://github.com/alibardide-dev/News-app",
     repo: "News-app",
     skills: [ "Android", "Jetpack Compose", "Hilt", "Room" ],
@@ -59,7 +59,7 @@ In general, it was an MVP for testing some Jetpack Compose features and getting 
   {
     title: "notal",
     year: 2021,
-    imageUrl: "/assets/notal-banner.png",
+    imageUrl: "https://raw.githubusercontent.com/alibardide-dev/notal/refs/heads/main/readme.files/nota-banner.png",
     github: "https://github.com/alibardide-dev/notal",
     repo: "notal",
     skills: [ "Android", "Xml", "Room database", "Notifications" ],
@@ -86,7 +86,7 @@ ComposeAdvancedShadow enhances the aesthetics of your app and provides the flexi
   {
     title: "Imagine",
     year: 2021,
-    imageUrl:"/assets/imagine-banner.png",
+    imageUrl:"https://raw.githubusercontent.com/alibardide-dev/Imagine/refs/heads/main/readme.files/imagine-banner.png",
     github: "https://github.com/alibardide-dev/Imagine",
     repo: "Imagine",
     skills: ["Android", "XML", "File Compression"],

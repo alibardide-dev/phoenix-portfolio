@@ -6,42 +6,51 @@ const SpotlightButton = ({ children }) => {
   const spanRef = useRef(null);
 
   useEffect(() => {
+    const button = btnRef.current;
+    const spotlight = spanRef.current;
+
+    if (!button || !spotlight) return;
+
     const handleMouseMove = (e) => {
-      const { width } = e.target.getBoundingClientRect();
-      const offset = e.offsetX;
+      const { width } = button.getBoundingClientRect();
+      const offset = e.clientX - button.getBoundingClientRect().left;
       const left = `${(offset / width) * 100}%`;
 
-      spanRef.current.animate({ left }, { duration: 250, fill: "forwards" });
+      spotlight.animate(
+        { left },
+        { duration: 250, fill: "forwards" }
+      );
     };
 
     const handleMouseLeave = () => {
-      spanRef.current.animate(
+      spotlight.animate(
         { left: "50%" },
         { duration: 100, fill: "forwards" }
       );
     };
 
-    btnRef.current.addEventListener("mousemove", handleMouseMove);
-    btnRef.current.addEventListener("mouseleave", handleMouseLeave);
+    button.addEventListener("mousemove", handleMouseMove);
+    button.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      btnRef.current.removeEventListener("mousemove", handleMouseMove);
-      btnRef.current.removeEventListener("mouseleave", handleMouseLeave);
+      button.removeEventListener("mousemove", handleMouseMove);
+      button.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   return (
     <motion.button
-      whileTap={{ scale: 0.985 }}
       ref={btnRef}
-      className="relative w-full max-w-xs border-1 border-white overflow-hidden rounded-lg bg-primary-dark dark:bg-primary-light px-4 py-3 text-lg font-medium text-[#212121]"
+      whileTap={{ scale: 0.985 }}
+      className="relative w-full max-w-xs overflow-hidden rounded-lg border border-white bg-primary-dark px-4 py-3 text-lg font-medium text-[#212121] dark:bg-primary-light"
     >
       <span className="pointer-events-none relative z-10 mix-blend-multiply">
         {children}
       </span>
+
       <span
         ref={spanRef}
-        className="pointer-events-none absolute left-[50%] top-[50%] h-32 w-32 -translate-x-[50%] -translate-y-[50%] rounded-full bg-slate-100"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-100"
       />
     </motion.button>
   );

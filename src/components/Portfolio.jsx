@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import portfolio from "../data/portfolio";
 import Reveal from "./utils/Reveal";
@@ -23,22 +23,72 @@ function Portfolio({ onClickProject }) {
         <div className="grow h-px ml-6 bg-gray-500" />
       </div>
       <div className="flex flex-col tems-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {portfolio.map((project, index) => (
-            <div key={index}>
-              <PortfolioItem
-                title={project.title}
-                year={project.year}
-                imageUrl={project.imageUrl}
-                github={project.github}
-                repo={project.repo}
-                skills={project.skills}
-                summary={project.summary}
-                onClickItem={() => { onClickProject(project) }}
-              />
-            </div>
-          ))}
-        </div>
+        <PortfolioCarousel />
+      </div>
+    </div>
+  );
+}
+
+function PortfolioCarousel() {
+  const trackRef = useRef(null);
+  const [index, setIndex] = useState(0);
+
+  const scrollToIndex = (i) => {
+    const track = trackRef.current;
+    const item = track.children[i];
+    track.scrollTo({ left: item.offsetLeft - track.offsetLeft, behavior: "smooth" });
+  };
+
+  const prev = () => scrollToIndex(Math.max(index - 1, 0));
+  const next = () => scrollToIndex(Math.min(index + 1, portfolio.length - 1));
+
+  // Keep `index` in sync with manual scrolling/swiping
+  useEffect(() => {
+    const track = trackRef.current;
+    const onScroll = () => {
+      const children = [...track.children];
+      const closest = children.reduce((best, child, i) => {
+        const diff = Math.abs(child.offsetLeft - track.offsetLeft - track.scrollLeft);
+        return diff < best.diff ? { i, diff } : best;
+      }, { i: 0, diff: Infinity });
+      setIndex(closest.i);
+    };
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="relative w-full mx-auto">
+      <div
+        ref={trackRef}
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {portfolio.map((project, index) => (
+          <div key={index} className="snap-center shrink-0 w-5/6 md:w-3/5 rounded-xl object-cover aspect-video">
+            <PortfolioItem
+              title={project.title}
+              year={project.year}
+              imageUrl={project.imageUrl}
+              github={project.github}
+              repo={project.repo}
+              skills={project.skills}
+              summary={project.summary}
+              onClickItem={() => { onClickProject(project) }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-3">
+        {portfolio.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollToIndex(i)}
+            className={`h-2 w-2 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-gray-300"
+              }`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -62,83 +112,71 @@ function PortfolioItem({ title, year, imageUrl, github, repo, skills, summary, o
     animate: { rotate: 2, scale: 1.1 },
   };
   return (
-    <motion.div
-      initial={{
-        y: "20%",
-        opacity: "0",
-      }}
-      whileInView={{
-        y: "0",
-        opacity: "1",
-      }}
-      viewport={{
-        amount: "some",
-        once: true,
-      }}
-      className="flex flex-col justify-start w-full p-2"
-
-    >
+    <div className="">
       <motion.div
-        initial="initial"
-        whileHover="animate"
-        className="hidden md:block relative overflow-hidden aspect-[16/9] my-4 mx-2 w-full rounded-md bg-border cursor-pointer"
-        onClick={onClickItem}
+        initial={{
+          y: "20%",
+          opacity: "0",
+        }}
+        whileInView={{
+          y: "0",
+          opacity: "1",
+        }}
+        viewport={{
+          amount: "some",
+          once: true,
+        }}
+        className="flex flex-col p-2 w-auto"
       >
-        <motion.div variants={imageVariant} className="px-10 absolute start-0 pt-10 y-20 rounded-md object-cover overflow-hidden">
-          <img
-            src={imageUrl}
-          />
+        <motion.div
+          initial="initial"
+          whileHover="animate"
+          className="hidden md:block relative overflow-hidden aspect-video my-4 mx-2 w-full rounded-md bg-border cursor-pointer"
+          onClick={onClickItem}
+        >
+          <motion.div variants={imageVariant} className="px-4 absolute start-0 pt-4 y-12 rounded-md object-cover ">
+            <img
+              src={imageUrl}
+            />
+          </motion.div>
+          <div className="flex flex-col absolute bottom-0 start-0 m-2 gap-1">
+            <ProjectMetaData repo={repo} />
+            <p className="bg-white drop-shadow-lg text-black text-md rounded-md px-2 py-1">&copy; {year}</p>
+          </div>
         </motion.div>
-        <div className="flex flex-col absolute bottom-0 start-0 m-2 gap-1">
-          <ProjectMetaData repo={repo} />
-          <p className="bg-white drop-shadow-lg text-black text-md rounded-md px-2 py-1">&copy; {year}</p>
+        <div
+          className="md:hidden relative overflow-hidden aspect-video my-4 mx-2 w-full cursor-pointer"
+          onClick={onClickItem}
+        >
+          <motion.div variants={imageVariant} className="rounded-md object-cover overflow-hidden">
+            <img
+              src={imageUrl}
+            />
+          </motion.div>
+          <div className="flex flex-col absolute bottom-0 start-0 m-2 gap-1">
+            <ProjectMetaData repo={repo} />
+            <p className="bg-white drop-shadow-md text-black text-md rounded-md px-2 py-1">&copy; {year}</p>
+          </div>
         </div>
-      </motion.div>
-      <div
-        initial="initial"
-        whileHover="animate"
-        className="md:hidden relative overflow-hidden aspect-[16/9] my-4 mx-2 w-full cursor-pointer"
-        onClick={onClickItem}
-      >
-        <motion.div variants={imageVariant} className="px-10 pt-10 y-20 rounded-md object-cover overflow-hidden">
-          <img
-            src={imageUrl}
-          />
-        </motion.div>
-        <div className="flex flex-col absolute bottom-0 start-0 m-2 gap-1">
-          <ProjectMetaData repo={repo} />
-          <p className="bg-white drop-shadow-md text-black text-md rounded-md px-2 py-1">&copy; {year}</p>
-        </div>
-      </div>
-      <div className="flex flex-row items-center justify-between">
-        <Reveal>
-          <p className="font-black text-md truncate ">{title}</p>
-        </Reveal>
-        <div className="grow h-px mx-2 bg-gray-500" />
-        <Reveal>
+        <div className="flex flex-row items-center justify-between">
+          <p className="font-semibold text-lg truncate ">{title}</p>
+          <div className="grow h-px mx-2 bg-gray-500" />
           <a href={github} target="_blank" rel="noopener noreferrer" className="flex flex-row  group transition ease-in-out rounded-md items-center justify-center p-1 border-2 border-white hover:bg-white cursor-pointer">
             {githubIcon} <p className="ps-1 transition ease-in-out group-hover:text-black text-md font-medium">GitHub</p>
           </a>
-        </Reveal>
-      </div>
-      <Reveal>
-        <div className="flex flex-wrap px-2  gap-2 overflow-visible">
+        </div>
+        <div className="flex pt-4 flex-wrap gap-1 overflow-visible">
           {skills.map((item, index) => (
-            <div key={index} className="rounded-md p-2 bg-border">
+            <div key={index} className="rounded-md p-1.5 bg-border">
               <p className="text-xs">{item}</p>
             </div>
           ))}
         </div>
-      </Reveal>
-      <Reveal>
-        <p className="text-md text-start">
+        <p className="text-md pt-4 text-start">
           {summary}.{" "}
-          <span className="text-copy-lighter cursor-pointer" onClick={onClickItem}>
-            Learn More &gt;
-          </span>
         </p>
-      </Reveal>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -146,7 +184,7 @@ function ProjectMetaData({ year, repo }) {
   const [repoData, setRepoData] = useState({});
 
   useEffect(() => {
-    fetch(`https://api.github.com/repos/alibardide5124/${repo}`)
+    fetch(`https://api.github.com/repos/alibardide-dev/${repo}`)
       .then(response => response.json())
       .then(data => setRepoData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -154,7 +192,7 @@ function ProjectMetaData({ year, repo }) {
 
   return (
     <div className="flex flex-column gap-1" >
-      <p className="bg-white drop-shadow-lg text-black text-md rounded-md px-2 py-1"><StarIcon className="size-5 stroke-black fill-black"/> {repoData.stargazers_count}</p>
+      <p className="bg-white drop-shadow-lg text-black text-md rounded-md px-2 py-1"><StarIcon className="size-5 stroke-black fill-black" /> {repoData.stargazers_count}</p>
       <p className="bg-white drop-shadow-lg text-black text-md rounded-md px-2 py-1"><ForkIcon className="size-5 fill-black" /> {repoData.forks_count}</p>
     </div>
   );

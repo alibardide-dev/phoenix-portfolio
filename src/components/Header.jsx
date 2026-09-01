@@ -14,7 +14,7 @@ const Header = () => {
         <h1 className="hidden md:block pl-2 text-2xl font-bold">
           Ali <span className="text-primary hover:underline">Bardide</span>
         </h1>
-        <h1 className="md:hidden pl-2 text-2xl font-bold flex">A<h1 className="text-secondary">B.</h1></h1>
+        <h1 className="md:hidden pl-2 text-2xl font-bold flex">A<span className="text-secondary">B.</span></h1>
       </div>
       <Social />
     </header>

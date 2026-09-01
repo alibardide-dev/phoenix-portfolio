@@ -9,24 +9,18 @@ function Contact() {
         <div className="flex flex-col w-full md:w-4/12">
           <Reveal>
             <h3 className="flex flex-wrap gap-2 items-center text-4xl font-black">
-              General{" "}
+              Hello{" "}
               <span
                 className="flex flex-row text-primary"
                 style={{ lineHeight: 0.85 }}
               >
-                <FlipText>Kenobi</FlipText>!
+                <FlipText>There</FlipText>!
               </span>
             </h3>
           </Reveal>
           <Reveal>
             <p className="flex flex-wrap gap-1 items-center text-md font-regular">
-              Request a qoute, or just drop a{" "}
-              <span
-                className="flex flex-row text-error"
-                style={{ lineHeight: 0.85 }}
-              >
-                &quot;<FlipText>Hello There</FlipText>&quot;
-              </span>{" "}
+              Request a qoute, or just drop a hello
               in this contact form. My inbox always has room for you.
             </p>
           </Reveal>

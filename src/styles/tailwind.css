@@ -1,11 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #3f51b5;
+    --color-primary-content: #f7f8fc;
+    --color-primary-dark: #32408f;
+    --color-primary-light: #606fc7;
+
+    --color-secondary: #b57c3f;
+    --color-secondary-content: #000000;
+    --color-secondary-dark: #8f6232;
+    --color-secondary-light: #c79560;
+
+    --color-background: #15161e;
+    --color-foreground: #20222d;
+    --color-border: #35384b;
+
+    --color-copy: #fbfbfc;
+    --color-copy-light: #d2d4df;
+    --color-copy-lighter: #969bb5;
+
+    --color-success: #3fb53f;
+    --color-warning: #b5b53f;
+    --color-error: #b53f3f;
+
+    --color-success-content: #000000;
+    --color-warning-content: #000000;
+    --color-error-content: #fcf7f7;
+
+    --font-sans: "Poppins", sans-serif;
+
+    --animate-blob: blob 7s infinite;
+
+    @keyframes blob {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+
+        33% {
+            transform: translate(30px, -50px) scale(1.1);
+        }
+
+        66% {
+            transform: translate(-20px, 20px) scale(0.9);
+        }
+
+        100% {
+            transform: translate(0px, 0px) scale(1);
+        }
+    }
+}
 
 @layer utilities {
     .animation-delay-2000 {
         animation-delay: 2s;
     }
+
     .animation-delay-4000 {
         animation-delay: 4s;
     }

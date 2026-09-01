@@ -10,7 +10,9 @@ import { AnimatePresence } from "framer-motion";
 import Modal from "./components/utils/Modal";
 
 function App() {
-  document.documentElement.classList.add("dark");
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
 
   const [theme, setTheme] = useState(null);
   const [modalOpen, setModalOpen] = useState(0);
@@ -46,7 +48,7 @@ function App() {
 
   return (
     <>
-      <div className="relative bg-white dark:bg-background text-stone-900 dark:text-stone-300 min-h-screen font-inter">
+      <div className="relative bg-white dark:bg-background text-stone-900 dark:text-stone-300 min-h-screen">
         <div>
           <Header />
           <main className="max-2-5xl">

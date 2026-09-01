@@ -17,7 +17,7 @@ function Timeline() {
           <p className="font-black text-4xl">
             Experiece
             <span
-              className="text-primary text-6xl"
+              className=" text-6xl"
               style={{ lineHeight: 0.35 }}
             >
               .
@@ -56,28 +56,23 @@ function TimelineItem({ year, title, duration, details }) {
     >
       <AnimatePresence>
         {isInView && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div className="p-4">
-              <div className="left flex flex-row gap-2 items-center">
-                <Reveal>
+          <Reveal>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <div className="p-4">
+                <div className="left flex flex-row gap-2 items-center">
                   <p className="rounded-md font-bold bg-primary text-primary-content text-4xl p-1">
                     {year}
                   </p>
-                </Reveal>
-                <Reveal>
                   <p className="hidden md:block text-2xl font-bold">{title}</p>
-                </Reveal>
-              </div>
-              <div className="md:hidden">
-                <Reveal>
+                </div>
+                <div className="md:hidden">
                   <p className="text-2xl font-bold">{title}</p>
-                </Reveal>
-              </div>
-              <Reveal>
+                </div>
                 <p className="md:mx-4 mt-2 text-md text-justify">{details}</p>
-              </Reveal>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </Reveal>
+
         )}
       </AnimatePresence>
       <AnimatePresence>
