@@ -138,9 +138,12 @@ function Stack() {
           <Reveal>
             <div className="flex flex-wrap px-2 p-1 gap-2 overflow-visible">
               {stack_work.map((item, index) => (
-                <div key={index} className="rounded-md p-2 bg-border">
-                  <p className="text-xs">{item.name}</p>
-                </div>
+                <span
+                  key={index}
+                  className="rounded-full bg-primary/30 px-3 py-2 text-xs font-medium "
+                >
+                  {item.name}
+                </span>
               ))}
             </div>
           </Reveal>
@@ -155,9 +158,12 @@ function Stack() {
           <Reveal>
             <div className="flex flex-wrap px-2 p-1 gap-2">
               {stack_fun.map((item, index) => (
-                <div key={index} className="rounded-md p-2 bg-border">
-                  <p className="text-xs">{item.name}</p>
-                </div>
+                <span
+                  key={index}
+                  className="rounded-full bg-primary/30 px-3 py-2 text-xs font-medium "
+                >
+                  {item.name}
+                </span>
               ))}
             </div>
           </Reveal>

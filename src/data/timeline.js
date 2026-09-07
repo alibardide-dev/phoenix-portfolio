@@ -1,18 +1,18 @@
 export default [
     {
         year: '2017',
-        title: 'Fist line of code',
+        title: 'First line of code',
         details: "Despite my efforts to make indie 2D games with GameMaker, I wrote my first line of code back in high school using Java in AIDE. Those first projects are lost forever since I didn't know about Git (thankfully, I'll never see them again)",
     },
     {
         year: '2019',
-        title: 'Open-Source experience',
+        title: 'Open-Source Experience',
         details: 'After a few attempts to develop useful apps, I made some contributions to the open-source community and published my very first apps in 2019. You can check them out on my GitHub page',
     },
     {
         year: '2021',
-        title: 'Entered Collage',
-        details: "In my path to pursue my true interest, programming, I got accepted in University of Gonbad-e-Kavous in Computer Science branch. Since then, I'm studying for bachelor degree with great scores, aiming to graduate in 2025",
+        title: 'Entered College',
+        details: "In my path to pursue my true interest, programming, I got accepted into the University of Gonbad-e-Kavous in the Computer Science program. Since then, I've been studying for my bachelor's degree with great scores, aiming to graduate in 2025",
     },
     {
         year: '2021',
@@ -21,7 +21,7 @@ export default [
     },
     {
         year: '2026',
-        title: 'Gradute',
-        details: "In february 2026, I got graduated as a Computer Science student with a GPA of 3.5",
+        title: 'Graduate',
+        details: "In February 2026, I graduated as a Computer Science student with a GPA of 3.5",
     },
 ]

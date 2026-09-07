@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Reveal from "./utils/Reveal";
 import SpotlightButton from "./SpotlightButton";
 import FlipText from "./FlipText";
@@ -16,11 +17,12 @@ function Intro() {
       <figure className="flex flex-col mx-auto w-11/12 bg-opacity-40 rounded-lg p-8 md:w-9/12 lg:w-6/12 mb-8 items-start md:mr-84">
         <div className="pt-6 text-center lg:text-left space-y-4 items-center">
           <div className="flex flex-row gap-8">
-            <img className="hidden md:block rounded-md size-32 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
+              <img className="hidden md:block rounded-md size-32 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
             <div className="flex flex-auto flex-col">
               <Reveal>
                 <p className="flex flex-wrap text-6xl items-center gap-4 font-black">
-                  <img className="block md:hidden rounded-md size-16 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
+
+                    <img className="block md:hidden rounded-md size-16 xlg:size-64 aspect-square" src="/assets/avatar.jpg" />
                   Hey, I&apos;m
                   <span
                     className="text-secondary items-center flex flex-row"

@@ -7,14 +7,17 @@ export default [
   { name: "MVVM Architecture" },
   { name: "Material Design" },
   { name: "Dagger/Hilt" },
+  { name: "Koin" },
   { name: "Retrofit" },
   { name: "Room Database" },
   { name: "Coroutines" },
+  { name: "Kotlin Flow" },
   { name: "Firebase" },
+  { name: "Supabase" },
   { name: "Laravel" },
-  { name: "PHP" },
   { name: "RESTful APIs"},
   { name: "MongoDB" },
+  { name: "Postgresql" },
   { name: "GitHub" },
 
 ]

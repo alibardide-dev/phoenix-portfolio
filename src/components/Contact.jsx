@@ -4,93 +4,146 @@ import FlipText from "./FlipText";
 
 function Contact() {
   return (
-    <div className="w-11/12 md:w-10/12 my-10 rounded-lg border-dashed border-2 border-background dark:border-copy mx-auto">
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-4 my-10">
-        <div className="flex flex-col w-full md:w-4/12">
+    <section className="relative w-full px-6 py-8 md:px-16 md:py-16">
+      <div className="mx-auto w-full md:max-w-10/12">
+        <div className="flex justify-center items-center">
           <Reveal>
-            <h3 className="flex flex-wrap gap-2 items-center text-4xl font-black">
-              Hello{" "}
+            <p className="font-black text-4xl">
+              Contact
               <span
-                className="flex flex-row text-primary"
-                style={{ lineHeight: 0.85 }}
+                className="text-primary text-6xl"
+                style={{ lineHeight: 0.35 }}
               >
-                <FlipText>There</FlipText>!
+                .
               </span>
-            </h3>
-          </Reveal>
-          <Reveal>
-            <p className="flex flex-wrap gap-1 items-center text-md font-regular">
-              Request a qoute, or just drop a hello
-              in this contact form. My inbox always has room for you.
             </p>
           </Reveal>
-          <div className="w-full mt-10 font-light text-sm">
-            <Reveal>
-              <p>Email: alibardide5124@gmail.com</p>
-            </Reveal>
-          </div>
+          <div className="grow h-px ml-6 bg-border" />
         </div>
-        <ContactForm>
-          <ContactInput
-            name="name"
-            placeholder="What's your name?"
-            type="text"
-          />
-          <ContactInput
-            name="email"
-            placeholder="What's your email address?"
-            type="email"
-          />
-          <ContactTextArea
-            name="message"
-            placeholder="Write you message here."
-          />
 
-          <button
-            type="submit"
-            className="text-center justify-end inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white bg-blue-500 drop-shadow-md hover:stroke-white transition ease-in-out hover:bg-violet-500 hover:scale-110 mx-auto"
-          >
-            Work With Me
-          </button>
-        </ContactForm>
+        <Reveal width="100%">
+          <div className="relative mt-12 overflow-hidden rounded-3xl bg-foreground/40 p-8 md:p-12">
+            <div
+              aria-hidden
+              className="absolute -right-20 -top-20 size-64 rounded-full bg-primary opacity-15 blur-3xl"
+            />
+            <div className="relative flex flex-col gap-10 md:flex-row md:gap-12">
+              <div className="w-full md:w-5/12">
+                <h3 className="flex flex-wrap items-center gap-2 text-3xl md:text-4xl font-black text-stone-900 dark:text-white">
+                  Hello{" "}
+                  <span className="flex flex-row text-primary" style={{ lineHeight: 0.85 }}>
+                    <FlipText>There</FlipText>!
+                  </span>
+                </h3>
+                <p className="mt-3 leading-relaxed text-stone-600 dark:text-copy-light">
+                  Request a quote, or just drop a hello in this contact form. My
+                  inbox always has room for you.
+                </p>
+                <a
+                  href="mailto:alibardide5124@gmail.com"
+                  className="group mt-6 inline-flex items-center gap-2 text-sm text-stone-900 dark:text-stone-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    className="fill-primary size-5"
+                  >
+                    <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
+                  </svg>
+                  <span className="border-b border-transparent transition ease-in-out group-hover:border-primary group-hover:text-primary">
+                    alibardide5124@gmail.com
+                  </span>
+                </a>
+              </div>
+
+              <ContactForm>
+                <ContactInput
+                  name="name"
+                  label="Name"
+                  placeholder="What's your name?"
+                  type="text"
+                />
+                <ContactInput
+                  name="email"
+                  label="Email"
+                  placeholder="What's your email address?"
+                  type="email"
+                />
+                <ContactTextArea
+                  name="message"
+                  label="Message"
+                  placeholder="Write your message here."
+                />
+                <button
+                  type="submit"
+                  className="mt-2 inline-flex w-full justify-center rounded-lg bg-primary px-8 py-3 text-base font-semibold text-primary-content drop-shadow-md transition ease-in-out hover:bg-primary-dark hover:scale-105"
+                >
+                  Work With Me
+                </button>
+              </ContactForm>
+            </div>
+          </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 }
 
 const INPUT_CLASS =
-  "transition ease-in-out p-2 bg-foreground border-2 focus:border-blue-500 rounded-md focus:outline-none hover:border-blue-300";
+  "w-full rounded-lg bg-background border border-border px-4 py-3 text-sm text-stone-900 dark:text-stone-200 placeholder:text-copy-lighter/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition ease-in-out";
 
 const ContactForm = ({ children }) => {
   return (
     <form
       action="https://getform.io/f/paoxgwvb"
       method="post"
-      className="flex flex-col gap-4 w-full md:w-6/12 mt-10 md:mt-0"
+      className="flex flex-col gap-5 w-full md:w-7/12"
     >
       {children}
     </form>
   );
 };
 
-const ContactInput = ({ name, placeholder, type }) => {
+const ContactInput = ({ name, label, placeholder, type }) => {
   return (
-    <div
-      className="flex flex-col"
-    >
-      <p>{placeholder}</p>
-      <input required type={type} name={name} className={INPUT_CLASS} />
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={name}
+        className="text-xs font-semibold uppercase tracking-widest text-copy-lighter"
+      >
+        {label}
+      </label>
+      <input
+        id={name}
+        required
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        className={INPUT_CLASS}
+      />
     </div>
   );
 };
 
-const ContactTextArea = ({ name, placeholder }) => {
+const ContactTextArea = ({ name, label, placeholder }) => {
   return (
-    <div
-      className="flex flex-col"
-    >
-      <p>{placeholder}</p>
-      <textarea required name={name} rows="10" className={INPUT_CLASS} />
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={name}
+        className="text-xs font-semibold uppercase tracking-widest text-copy-lighter"
+      >
+        {label}
+      </label>
+      <textarea
+        id={name}
+        required
+        name={name}
+        rows="6"
+        placeholder={placeholder}
+        className={INPUT_CLASS}
+      />
     </div>
   );
 };
